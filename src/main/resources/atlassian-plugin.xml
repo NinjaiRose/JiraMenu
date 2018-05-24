@@ -1,0 +1,37 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="menu"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="menu-resources" name="menu Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="menu.css" location="/css/menu.css"/>
+        <resource type="download" name="menu.js" location="/js/menu.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>menu</context>
+        <context>jira.general</context>
+    </web-resource>
+
+    <web-section key="my_links_section" name="My Links Main Section" location="my_links_link" weight="10"/>
+
+    <web-item key="my_links_link" name="Link on My Links Main Section" section="system.top.navigation.bar" weight="47">
+        <label>Compress</label>
+        <link linkId="my_links_link"/>
+    </web-item>
+
+    <web-item key="website_link" name="Company Web Site" section="my_links_link/my_links_section" weight="10">
+        <label>TOW Epics Board</label>
+        <link linkId="website_link"/>
+    </web-item>
+
+</atlassian-plugin>
